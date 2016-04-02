@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+        "http://struts.apache.org/dtds/struts-config_1_3.dtd"> 
+ 
+<struts-config>
+
+	<form-beans>
+		 <form-bean name="PlaceOrderForm" type="orderProcess.form.PlaceOrderForm"/>
+    	<form-bean name="QueryOrderForm" type="orderProcess.form.QueryOrderForm"/>
+    </form-beans>
+
+    
+    <action-mappings>
+    	<!-- place order  -->
+    	<action 
+    		path="/PlaceOrder" 
+    		type="orderProcess.action.PlaceOrderAction" 
+    		scope="request" 
+    		name="PlaceOrderForm"
+    		validate="false" 
+    		parameter="task">
+    		<forward name="success" path="/pages/orderResult.jsp"/>
+    		<forward name="error" path="/pages/error.jsp"/>
+		</action>
+		
+		<!-- query order -->
+		<action 
+			path="/QueryOrder" 
+			type="orderProcess.action.QueryOrderAction" 
+			scope="request" 
+			name="QueryOrderForm"
+			validate="false" 
+			parameter="task">
+			<forward name="success" path="/pages/queryResult.jsp"/>
+    		<forward name="error" path="/pages/error.jsp"/>
+		</action>
+		
+    </action-mappings>
+    
+
+    <message-resources parameter="resource.application"/>
+
+</struts-config>
